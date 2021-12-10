@@ -1,9 +1,54 @@
-.red {
-    color: red;
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    overflow-x: hidden !important;
+    margin: 0;
+    padding: 0;
 }
 
 .border-bottom {
     background-color: transparent;
     border-radius: 0;
     border-bottom-width: 4px;
+}
+
+main{
+    overflow-y: hidden;
+}
+
+.diagonal-box{
+    background-image: linear-gradient(90deg, rgba(246,207,134,1) 0%, rgba(255,196,156,1) 100%);
+    transform: skewY(-11deg);
+}
+
+.content{
+    transform: skewY(11deg);
+}
+
+#plate{
+    width:60%;
+    position:absolute;
+    top: -10% !important;
+    right: -15% !important;
+    transform: skewY(11deg);
+    max-width: 900px;
+}
+
+.img-div {
+    width: 100%;
+}
+
+#flipBtn {
+    background: orange;
+    border: none;
+    letter-spacing: 1px;
+}
+
+.card {
+    border: none;
+    // background-image: linear-gradient(90deg, rgba(246,207,134,1) 0%, rgba(255,196,156,1) 100%);
+    box-shadow: 2px 2px 10px 6px #d0d0d0;
 }
