@@ -1,27 +1,80 @@
-import React, { Component } from 'react';
+import React, { useState, Component, useCallback } from 'react';
+import Axios from 'axios';
 import Restaurant from './restaurantsComponent';
 
+const API_Key =
+	'zPg1jzeMzzMXcGt9faUTFOj61P1Qj7JHA03RR_PN5scHArheA_bjI2iifJj_TPS8A_bSiRcg9IKTWR0QKIN8SMoOsWcO9XA8jxHfyRmJQGf8uPBxwPo4Ce30LCexYXYx';
+// const apiURL = `https://api.yelp.com/v3/businesses/search`;
+
+// Axios.get(
+// 	`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search`,
+// 	{
+// 		headers: {
+// 			Authorization: `Bearer ${API_Key}`
+// 		},
+// 		params: {
+// 			location: 'san diego',
+// 			categories: 'mexican'
+// 		}
+// 	}
+// )
+// 	.then((res) => console.log(res))
+// 	.catch((err) => {
+// 		console.log('error');
+// 	});
+
+Axios
+	.get(
+		`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=texas`,
+		{
+			headers: {
+				Authorization: `Bearer ${API_Key}`
+			},
+			params: {
+				categories: 'breakfast_brunch'
+			}
+		}
+	)
+	.then((res) => {
+		console.log(res);
+	})
+	.catch((err) => {
+		console.log('error');
+	});
 export default class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			restaurants: []
+		};
 	}
 
-	getLocation() {
-		if (navigator.geolocation) {
-			navigator.geolocation.getCurrentPosition(function (pos) {
-				//You have your locaton here
-				console.log(
-					'Latitude: ' +
-						pos.coords.latitude +
-						'Longitude: ' +
-						pos.coords.longitude
-				);
-			});
-		} else {
-			console.log('Geolocation is not supported by this browser.');
-		}
-	}
+	// const [restaurants, setRestaurants] = useState([]);
+	// const [requestError, setRequestError] = useState();
+	
+	// const fetchData = useCallback(async () => {
+	// 	try{
+
+	// 	} catch (err) {
+
+	// 	}
+	// });
+
+	// getLocation() {
+	// 	if (navigator.geolocation) {
+	// 		navigator.geolocation.getCurrentPosition(function (pos) {
+	// 			//You have your location here
+	// 			console.log(
+	// 				'Latitude: ' +
+	// 					pos.coords.latitude +
+	// 					'Longitude: ' +
+	// 					pos.coords.longitude
+	// 			);
+	// 		});
+	// 	} else {
+	// 		console.log('Geolocation is not supported by this browser.');
+	// 	}
+	// }
 
 	render() {
 		return (
@@ -46,9 +99,9 @@ export default class App extends Component {
 
 								<div className='col-md-7'>
 									<p className='fs-4'>
-										Solving the world's most toughest problem… what do you want
+										{/* Solving the world's most toughest problem… what do you want
 										to eat? With "Flip" simply just select two kinds of foods
-										and we will find you the perfect place to eat.
+										and we will find you the perfect place to eat. */}
 									</p>
 									<div className='input-group mb-3'>
 										<button className='btn border-bottom' type='button'>
@@ -112,7 +165,18 @@ export default class App extends Component {
 						/>
 					</div>
 				</div>
-				<Restaurant/>
+
+				{/* {this.state.restaurants.map(restaurant => (
+					<Restaurant
+						imageURL={restaurant.image_url}
+						name={restaurant.name}
+						url={restaurant.url}
+						review_count={restaurant.review_count}
+						rating={restaurant.rating}
+						location={restaurant.location.display_address}
+						price={restaurant.price}
+						phone={restaurant.display_phone}/>
+				))} */}
 				<footer className='py-3 text-muted text-center'>
 					<span>
 						<img src='https://img.icons8.com/office/20/000000/pancake.png' />
