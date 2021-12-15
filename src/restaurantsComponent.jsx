@@ -1,9 +1,24 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 
-export default class Restaurant extends Component {
-    constructor(props) {
-        super(props);
+const Restaurant = () => {
+	const [movies, setMovies] = useState([])
+  	const [searchValue, setSearchValue] = useState('');
+
+	const getMovieRequest = async (searchValue) => {
+    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=9cc709f1`;
+
+    const response = await fetch(url);
+    const responseJson = await response.json();
+
+    if(responseJson.Search) {
+      setMovies(responseJson.Search);
     }
+  };
+
+  useEffect(() =>{
+    getMovieRequest(searchValue);
+  }, [searchValue]);
+  
     render() { 
         return (
 					<div className='container'>
@@ -11,40 +26,32 @@ export default class Restaurant extends Component {
 							<div className='col m-3 p-3'>
 								<div className='card'>
 									<img
-										src={ this.props.imageURL }
 										className='card-img-top'
 										alt='...'
 									/>
 									<div className='card-body'>
 										<h5 className='card-title text-center fs-3'>
-											{ this.props.name }
+											movie
 										</h5>
 										<div className='mb-3 row'>
 											<label
 												for='staticEmail'
 												className='col-sm-3 col-form-label'>
-												Rating: { this.props.rating } { this.props.review_count } reviews
+												Rating: 5/5 200 reviews
 											</label>
 										</div>
 										<div className='mb-3 row'>
 											<label
 												for='staticEmail'
 												className='col-sm-3 col-form-label'>
-												Price: { this.props.price }
+												Price: Free
 											</label>
 										</div>
 										<div className='mb-3 row'>
 											<label
 												for='staticEmail'
 												className='col-sm-3 col-form-label'>
-												Phone: { this.props.phone }
-											</label>
-										</div>
-										<div className='mb-3 row'>
-											<label
-												for='staticEmail'
-												className='col-sm-3 col-form-label'>
-												Address: { this.props.location }
+												Phone: 6193033433
 											</label>
 										</div>
 									</div>
@@ -63,5 +70,12 @@ export default class Restaurant extends Component {
 					</div>
 				);
     }
-}
  
+}
+
+
+
+
+
+export default Restaurant
+    
