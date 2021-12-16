@@ -19,6 +19,7 @@ body{
 }
 
 .diagonal-box{
+    min-height: 93vh;
     background-image: linear-gradient(90deg, rgba(246,207,134,1) 0%, rgba(255,196,156,1) 100%);
     transform: skewY(-11deg);
 }
@@ -30,7 +31,7 @@ body{
 #plate{
     width: 40%;
     position:absolute;
-    top: -14% !important;
+    top: -17% !important;
     right: -10% !important;
     transform: skewY(11deg) rotate(-45deg);
     max-width: 900px;
@@ -47,6 +48,7 @@ body{
 }
 
 .card {
+    max-width: 540px;
    background: rgba( 250, 246, 246, 0.35 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
     backdrop-filter: blur( 8px );
