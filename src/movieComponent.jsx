@@ -12,7 +12,7 @@ class MovieCards extends Component {
 							<div className='row no-gutters'>
 								<div className='col-md-4'>
 									<img
-										// src={this.props.movieOption1.image}
+										src={this.props.movieOption1.image}
 										alt='...'
 										width='150px'
 									/>
@@ -42,7 +42,7 @@ class MovieCards extends Component {
 							<div className='row no-gutters'>
 								<div className='col-md-4'>
 									<img
-										// src={this.props.movieOption2.image}
+										src={this.props.movieOption2.image}
 										alt='...'
 										width='150px'
 									/>

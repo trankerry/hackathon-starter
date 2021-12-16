@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
-// import MovieCards from './movieComponent';
+import MovieCards from './movieComponent';
 
 export default class App extends Component {
 	constructor(props) {
@@ -15,7 +15,7 @@ export default class App extends Component {
 
 	handleClick() {
 		Axios.get(
-			`https://imdb-api.com/en/API/MostPopularMovies/${process.env.REACT_APP_MY_API_KEY}`
+			`https://imdb-api.com/en/API/MostPopularMovies/${process.env.API_KEY}`
 		).then((res) => {
 			const num = Math.floor(Math.random() * 100);
 			const num2 = Math.floor(Math.random() * 100);
@@ -56,21 +56,19 @@ export default class App extends Component {
 										to watch? With "Movie" simply just select two kinds of genre
 										and we will find you the perfect movie to watch.
 									</p>
-									<button
-										type='button'
-										id='flipBtn'
-										onClick={this.handleClick}
-										className='form-control btn btn-primary btn-lg p-3 fs-3 fw-bold'>
-										<img
-											src='https://img.icons8.com/external-icongeek26-linear-colour-icongeek26/40/000000/external-movie-cinema-icongeek26-linear-colour-icongeek26-7.png'
-											className='mx-3'
-										/>
-										Search
-									</button>
+									<div className='col-md-6'> 
+										<button
+											type='button'
+											id='flipBtn'
+											onClick={this.handleClick}
+											className='form-control btn btn-primary btn-lg p-3 fs-3 fw-bold'>
+											Search
+										</button>
+									</div>
 								</div>
 							</div>
 						</div>
-						{/* {(this.state.clicked) ? <MovieCards movieOption1={this.state.movieOption1} movieOption2={this.state.movieOption2}/> : <div className='my-5 py-5'> </div>} */}
+						{(this.state.clicked) ? <MovieCards movieOption1={this.state.movieOption1} movieOption2={this.state.movieOption2}/> : <div className='my-5 py-5'> </div>}
 					</div>
 					<div className='img-div'>
 						<img
