@@ -42,21 +42,21 @@ export default class App extends Component {
 									src='https://img.icons8.com/external-icongeek26-linear-colour-icongeek26/40/000000/external-movie-cinema-icongeek26-linear-colour-icongeek26-7.png'
 									className='mx-3'
 								/>
-								<span className='fs-4'>Movie Something</span>
+								<span className='fs-4'>Movie Search</span>
 							</a>
 						</header>
 
 						<div className='px-5 py-2 mb-2 rounded-3'>
 							<div className='container-fluid pt-2 pb-2 row'>
-								<h1 className='display-5 fw-bold'>Movie Something</h1>
+								<h1 className='display-5 fw-bold'>Movie Search</h1>
 
 								<div className='col-md-7 mb-3'>
 									<p className='fs-4'>
-										Solving the world's most toughest problem… what do you want
-										to watch? With "Movie" simply just select two kinds of genre
-										and we will find you the perfect movie to watch.
+										Solving the world's toughest problem… what do you want to
+										watch? With "Movie Search" two of the most current popular
+										titles from IMDB will be recommended to you.
 									</p>
-									<div className='col-md-6'> 
+									<div className='col-md-6'>
 										<button
 											type='button'
 											id='flipBtn'
@@ -68,7 +68,14 @@ export default class App extends Component {
 								</div>
 							</div>
 						</div>
-						{(this.state.clicked) ? <MovieCards movieOption1={this.state.movieOption1} movieOption2={this.state.movieOption2}/> : <div className='my-5 py-5'> </div>}
+						{this.state.clicked ? (
+							<MovieCards
+								movieOption1={this.state.movieOption1}
+								movieOption2={this.state.movieOption2}
+							/>
+						) : (
+							<div className='my-5 py-5'> </div>
+						)}
 					</div>
 					<div className='img-div'>
 						<img
